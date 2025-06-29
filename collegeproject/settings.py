@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@bemzj4b4)gc^8vu7v7z-ft=s8ca+1j9o5lbu5=ne)1cly1+jf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get("RENDER") else True
+#DEBUG = False if os.environ.get("RENDER") else True
+DEBUG =  True
 
-ALLOWED_HOSTS = ['stprojecthub']
+ALLOWED_HOSTS = ['stprojecthub.onrender.com', 'localhost']
 
 
 # Application definition
@@ -127,8 +128,16 @@ STATICFILES_STORAGE = 'WHITENOISE.STORAGE.cOMPRESSEDmANIFESTsTATICfILESsTORAGE'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
+"""
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = os.environ.get("DEBUG", "False") == "True
+"""
+
+import dj_database_url
+import os
+
+DATABASES['default'] = dj_database_url.config(
+    default=os.getenv('DATABASE_URL')
+)
