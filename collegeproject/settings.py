@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@bemzj4b4)gc^8vu7v7z-ft=s8ca+1j9o5lbu5=ne)1cly1+jf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("RENDER") else True
 
-ALLOWED_HOSTS = ['project']
+ALLOWED_HOSTS = ['stprojecthub']
 
 
 # Application definition
@@ -129,3 +129,6 @@ STATICFILES_STORAGE = 'WHITENOISE.STORAGE.cOMPRESSEDmANIFESTsTATICfILESsTORAGE'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import os
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = os.environ.get("DEBUG", "False") == "True"

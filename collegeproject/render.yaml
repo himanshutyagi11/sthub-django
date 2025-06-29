@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: django-web
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn myproject.wsgi:application"
+    plan: free
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: myproject.settings
+      - key: (u-wjg4b+%8v^7c8n3ylxr&zs-hm!gprltb7018@6(e^x7=ho&
+        value: <your-secret-key>
+      - key: DEBUG
+        value: False
+gunicorn myproject.wsgi:application
